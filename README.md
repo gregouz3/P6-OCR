@@ -4,7 +4,4 @@ Ce projet 6 regroupe le backend une application web permettant aux utilisateurs 
 
 INSTALLATION du front --> 
 
-git clone : https://github.com/OpenClassrooms-Student-Center/dwj-projet6 \n
-npm i \n
-npm start \n 
-Exécution de l’API sur http://localhost:3000. 
+git clone : https://github.com/OpenClassrooms-Student-Center/dwj-projet6,  npm i,  npm start 
