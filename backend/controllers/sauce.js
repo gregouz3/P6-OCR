@@ -1,6 +1,5 @@
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
-const { SSL_OP_ALL } = require('constants');
 
 exports.createSauce = (req, res, next) => {
 
@@ -56,15 +55,6 @@ exports.deleteSauce = (req, res, next) => {
 
 exports.countLikeSauce = (req, res, next) => {
 
-  if (req.body.like === -1) {
-    Sauce.updateOne({ _id: req.params.id }, 
-    {
-      $inc: {dislikes: -(req.body.like + 1)} ,
-      $push: {usersDisliked: req.body.userId}
-    })
-    .then ((sauce)=> res.status(200).json({ message: 'Sauce disliked !'}))
-    .catch(error => res.status(400).json({ error }));
-  }
   if (req.body.like === 1) {
     Sauce.updateOne({ _id: req.params.id }, 
     {
@@ -74,6 +64,15 @@ exports.countLikeSauce = (req, res, next) => {
     .then ((sauce)=> res.status(200).json({ message: 'Sauce liked !'}))
     .catch(error => res.status(400).json({ error }));
   } 
+  if (req.body.like === -1) {
+    Sauce.updateOne({ _id: req.params.id }, 
+    {
+      $inc: {dislikes: -(req.body.like + 1)} ,
+      $push: {usersDisliked: req.body.userId}
+    })
+    .then ((sauce)=> res.status(200).json({ message: 'Sauce disliked !'}))
+    .catch(error => res.status(400).json({ error }));
+  }
   if (req.body.like === 0) {
     Sauce.findOne({ _id: req.params.id})
     .then(sauce => {
