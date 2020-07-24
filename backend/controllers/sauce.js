@@ -58,7 +58,7 @@ exports.countLikeSauce = (req, res, next) => {
   if (req.body.like === 1) {
     Sauce.updateOne({ _id: req.params.id }, 
     {
-      $inc: {likes: req.body.like + 1} ,
+      $inc: {likes: 1} ,
       $push: {usersLiked: req.body.userId}
     })
     .then ((sauce)=> res.status(200).json({ message: 'Sauce liked !'}))
@@ -67,7 +67,7 @@ exports.countLikeSauce = (req, res, next) => {
   if (req.body.like === -1) {
     Sauce.updateOne({ _id: req.params.id }, 
     {
-      $inc: {dislikes: -(req.body.like + 1)} ,
+      $inc: {dislikes: 1} ,
       $push: {usersDisliked: req.body.userId}
     })
     .then ((sauce)=> res.status(200).json({ message: 'Sauce disliked !'}))
@@ -97,8 +97,4 @@ exports.countLikeSauce = (req, res, next) => {
     })
     .catch(error => res.status(400).json({ error }));
   }
-  
 };
-
-
-

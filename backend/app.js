@@ -3,12 +3,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
+
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://gregouz3:greggreg@cluster0.jcqob.mongodb.net/sauce?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://gregouz3:greggreg@cluster0.jcqob.mongodb.net/saucess?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
